@@ -1,0 +1,73 @@
+{
+  "name": "wz-discord-bot",
+  "version": "1.0.0",
+  "description": "Warzone Discord bot, using discord.js, supabase & google vision ai",
+  "homepage": "https://github.com/seannhewitson/wz-discord-bot#readme",
+  "bugs": {
+    "url": "https://github.com/seannhewitson/wz-discord-bot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seannhewitson/wz-discord-bot.git"
+  },
+  "license": "MIT",
+  "author": "SeannHewitson",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "build": "tsup src --minify",
+    "start": "set NODE_ENV=production&&node dist/index.js",
+    "types": "npx supabase gen types typescript --project-id=\"ufdmrmnzahqufozmysmk\" --schema public > src/supabase/types.ts"
+  },
+  "dependencies": {
+    "@google-cloud/vision": "^5.3.4",
+    "@supabase/supabase-js": "^2.80.0",
+    "discord.js": "^14.24.2",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  },
+  "nodemonConfig": {
+    "ext": "ts",
+    "ignore": [
+      "dist",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "ts-node src/index.ts"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "trailingComma": "es5",
+    "semi": false,
+    "singleQuote": true,
+    "useTabs": false,
+    "arrowParens": "always",
+    "endOfLine": "auto",
+    "jsxSingleQuote": true,
+    "plugins": [
+      "@ianvs/prettier-plugin-sort-imports"
+    ],
+    "importOrder": [
+      "<THIRD_PARTY_MODULES>",
+      "",
+      "^((commands)|(events)|(subscriptions)|(supabase)|(utils))(.*)$",
+      "",
+      "^((./)|(../))(.*)$"
+    ],
+    "importOrderSeparation": true,
+    "importOrderCaseSensitive": true,
+    "importOrderSortSpecifiers": true
+  }
+}
